@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{ titulo }}</p>
+        <p>{{ saudacao() }}</p>
+        <p>{{ helloWorld() }}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                titulo: "Este é o meu título!",
+            },
+            methods: {
+                saudacao: function() {
+                    return 'Boa semana!'
+                },
+                helloWorld: function() {
+                    return 'Hello World!'
+                }
+            },
+        })
+</script>
+</body>
+</html>

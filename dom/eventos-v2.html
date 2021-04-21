@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{ contador }}</p>
+        <span>
+            <button v-on:click="incrementa">+</button>
+            <button v-on:click="decrementa">-</button>
+            <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}</p>
+        </span>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                contador: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: {
+                incrementa() {
+                    this.contador++
+                },
+                decrementa() {
+                    this.contador--
+                },
+                atualizarXY(event) {
+                    this.x = event.clientX
+                    this.y = event.clientY
+                },
+            }
+        })
+    </script>

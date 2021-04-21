@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{ contador }}</p>
+        <span>
+            <!-- $event -> o evento gerado a partir do clique do botão deve ser passado como parâmetro e não ignorado --> 
+            <button v-on:click="incrementa(5, $event)">+</button>
+            <button v-on:click="decrementa(5, $event)">-</button>
+        </span>
+        <p v-on:mousemove="atualizarXY">
+            Mouse: {{ x }} e {{ y }}
+            <span v-on:mousemove.stop="">não disparar o evento do mouse aqui</span>
+        </p>
+        
+        <!-- v-on:click.prevent="" -> desabilita o evento padrão do clique, ceste caso o link não é direcionado para a página do Google -->
+        <a v-on:click.prevent="" href="https://google.com.br">Google</a>
+        <a v-on:click="naoNavegar" href="https://google.com.br">Google</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                contador: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: {
+                incrementa(passo, event) {
+                    console.log(passo, event)
+                    this.contador += passo
+                },
+                decrementa(passo, event) {
+                    this.contador -= passo
+                },
+                atualizarXY(event) {
+                    this.x = event.clientX
+                    this.y = event.clientY
+                },
+                naoNavegar(event) {
+                    /* previne a ação padrão do elemeto através da captura do evento*/
+                    event.preventDefault()
+                },
+                // parar(event) {
+                //     event.stopPropagation()
+                // }, 
+            }
+        })
+    </script>

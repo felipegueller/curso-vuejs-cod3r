@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <!-- v-once não deixa o atributo ser renderizado mais de uma vez -->
+        <p v-once>{{ titulo }}</p>
+        <p>{{ saudacao() }}</p>
+        <a v-bind:href="link">Google</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                titulo: "Usando o VueJS",
+                link: 'https://google.com.br',
+            },
+            methods: {
+                saudacao: function() {
+                    this.titulo = 'Good Morning!'
+                    return this.titulo
+                },
+            },
+        })
+    </script>
+</body>
+</html>
